@@ -17,21 +17,21 @@
             padding: 20px;
         }
         .materials {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            display: none;
+            margin-top: 20px;
         }
-        .material-card {
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list li {
             background: white;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px;
+            margin-bottom: 10px;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .material-card:hover {
-            transform: scale(1.05);
         }
         .btn {
             display: inline-block;
@@ -46,52 +46,209 @@
         .btn:hover {
             background: #0056b3;
         }
+        .menu {
+            margin-bottom: 20px;
+        }
+        .upload-section {
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Tài liệu Sinh viên</h1>
-    <div class="materials">
-        <div class="material-card">
-            <h3>Tài Liệu Toán Cao Cấp</h3>
-            <a href= "Toancaocap.html" class="btn">Xem</a>
-            <a href="toan_cao_cap.pdf" class="btn">Tải Xuống</a>
-            <a href="toan_cao_cap.pdf" class="btn">Tải Lên</a>
+    <div class="menu">
+        <label for="subject-select">Chọn môn học:</label>
+        <select id="subject-select">
+            <option value="">--Chọn một môn học--</option>
+            <option value="toan_cao_cap">Toán Cao Cấp</option>
+            <option value="toan_roi_rac">Toán Rời Rạc</option>
+            <option value="vat_ly_1">Vật Lý 1</option>
+            <option value="phap_luat_dai_cuong">Pháp Luật Đại Cương</option>
+            <option value="anh_van_1">Anh Văn 1</option>
+            <option value="chu_nghia_xa_hoi_hoc">Chủ Nghĩa Xã Hội Học</option>
+        </select>
+    </div>
+    
+    <div class="materials" id="toan_cao_cap">
+        <ul class="file-list">
+            <li>
+                <h3>Tài Liệu Toán Cao Cấp - File 1</h3>
+                <a href="toan_cao_cap_file_1.pdf" class="btn">Xem</a>
+                <a href="toan_cao_cap_file_1.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Toán Cao Cấp - File 2</h3>
+                <a href="toan_cao_cap_file_2.pdf" class="btn">Xem</a>
+                <a href="toan_cao_cap_file_2.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Toán Cao Cấp - File 3</h3>
+                <a href="toan_cao_cap_file_3.pdf" class="btn">Xem</a>
+                <a href="toan_cao_cap_file_3.pdf" class="btn">Tải Xuống</a>
+            </li>
+        </ul>
+        <div class="upload-section">
+            <h3>Tải tài liệu lên</h3>
+            <input type="file" id="upload-toan-cao-cap" />
+            <button class="btn" onclick="uploadFile('toan_cao_cap')">Tải Lên</button>
         </div>
-        
-        <div class="material-card">
-            <h3>Tài Liệu Toán Rời Rạc</h3>
-            <a href="toan_roi_rac.html" class="btn">Xem</a>
-            <a href="toan_roi_rac.pdf" class="btn">Tải Xuống</a>
-            <a href="toan_roi_rac.pdf" class="btn">Tải Lên</a>
+    </div>
+    
+    <div class="materials" id="toan_roi_rac">
+        <ul class="file-list">
+            <li>
+                <h3>Tài Liệu Toán Rời Rạc - File 1</h3>
+                <a href="toan_roi_rac_file_1.pdf" class="btn">Xem</a>
+                <a href="toan_roi_rac_file_1.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Toán Rời Rạc - File 2</h3>
+                <a href="toan_roi_rac_file_2.pdf" class="btn">Xem</a>
+                <a href="toan_roi_rac_file_2.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Toán Rời Rạc - File 3</h3>
+                <a href="toan_roi_rac_file_3.pdf" class="btn">Xem</a>
+                <a href="toan_roi_rac_file_3.pdf" class="btn">Tải Xuống</a>
+            </li>
+        </ul>
+        <div class="upload-section">
+            <h3>Tải tài liệu lên</h3>
+            <input type="file" id="upload-toan-roi-rac" />
+            <button class="btn" onclick="uploadFile('toan_roi_rac')">Tải Lên</button>
         </div>
-        <div class="material-card">
-            <h3>Tài Liệu Vật Lý 1</h3>
-            <a href="vat_ly_1.html" class="btn">Xem</a>
-            <a href="vat_ly_1.pdf" class="btn">Tải Xuống</a>
-            <a href="vat_ly_1.pdf" class="btn">Tải Lên</a>
+    </div>
+
+    <div class="materials" id="vat_ly_1">
+        <ul class="file-list">
+            <li>
+                <h3>Tài Liệu Vật Lý 1 - File 1</h3>
+                <a href="vat_ly_1_file_1.pdf" class="btn">Xem</a>
+                <a href="vat_ly_1_file_1.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Vật Lý 1 - File 2</h3>
+                <a href="vat_ly_1_file_2.pdf" class="btn">Xem</a>
+                <a href="vat_ly_1_file_2.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Vật Lý 1 - File 3</h3>
+                <a href="vat_ly_1_file_3.pdf" class="btn">Xem</a>
+                <a href="vat_ly_1_file_3.pdf" class="btn">Tải Xuống</a>
+            </li>
+        </ul>
+        <div class="upload-section">
+            <h3>Tải tài liệu lên</h3>
+            <input type="file" id="upload-vat-ly-1" />
+            <button class="btn" onclick="uploadFile('vat_ly_1')">Tải Lên</button>
         </div>
-        <div class="material-card">
-            <h3>Tài Liệu Pháp Luật Đại Cương</h3>
-            <a href="phap_luat_dai_cuong.html" class="btn">Xem</a>
-            <a href="phap_luat_dai_cuong.pdf" class="btn">Tải Xuống</a>
-            <a href="phap_luat_dai_cuong.pdf" class="btn">Tải Lên</a>
+    </div>
+
+    <div class="materials" id="phap_luat_dai_cuong">
+        <ul class="file-list">
+            <li>
+                <h3>Tài Liệu Pháp Luật Đại Cương - File 1</h3>
+                <a href="phap_luat_dai_cuong_file_1.pdf" class="btn">Xem</a>
+                <a href="phap_luat_dai_cuong_file_1.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Pháp Luật Đại Cương - File 2</h3>
+                <a href="phap_luat_dai_cuong_file_2.pdf" class="btn">Xem</a>
+                <a href="phap_luat_dai_cuong_file_2.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Pháp Luật Đại Cương - File 3</h3>
+                <a href="phap_luat_dai_cuong_file_3.pdf" class="btn">Xem</a>
+                <a href="phap_luat_dai_cuong_file_3.pdf" class="btn">Tải Xuống</a>
+            </li>
+        </ul>
+        <div class="upload-section">
+            <h3>Tải tài liệu lên</h3>
+            <input type="file" id="upload-phap-luat-dai-cuong" />
+            <button class="btn" onclick="uploadFile('phap_luat_dai_cuong')">Tải Lên</button>
         </div>
-        <div class="material-card">
-            <h3>Tài Liệu Anh Văn 1</h3>
-            <a href="anh_van_1.html" class="btn">Xem</a>
-            <a href="anh_van_1.pdf" class="btn">Tải Xuống</a>
-            <a href="anh_van_1.pdf" class="btn">Tải Lên</a>
+    </div>
+
+    <div class="materials" id="anh_van_1">
+        <ul class="file-list">
+            <li>
+                <h3>Tài Liệu Anh Văn 1 - File 1</h3>
+                <a href="anh_van_1_file_1.pdf" class="btn">Xem</a>
+                <a href="anh_van_1_file_1.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Anh Văn 1 - File 2</h3>
+                <a href="anh_van_1_file_2.pdf" class="btn">Xem</a>
+                <a href="anh_van_1_file_2.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Anh Văn 1 - File 3</h3>
+                <a href="anh_van_1_file_3.pdf" class="btn">Xem</a>
+                <a href="anh_van_1_file_3.pdf" class="btn">Tải Xuống</a>
+            </li>
+        </ul>
+        <div class="upload-section">
+            <h3>Tải tài liệu lên</h3>
+            <input type="file" id="upload-anh-van-1" />
+            <button class="btn" onclick="uploadFile('anh_van_1')">Tải Lên</button>
         </div>
-        <div class="material-card">
-            <h3>Tài liệu Chủ Nghĩa Xã Hội Học</h3>
-            <a href="chu_nghia_xa_hoi_hoc.html" class="btn">Xem</a>
-            <a href="chu_nghia_xa_hoi_hoc.pdf" class="btn">Tải Xuống</a>
-            <a href="chu_nghia_xa_hoi_hoc.pdf" class="btn">Tải Lên</a>
+    </div>
+
+    <div class="materials" id="chu_nghia_xa_hoi_hoc">
+        <ul class="file-list">
+            <li>
+                <h3>Tài Liệu Chủ Nghĩa Xã Hội Học - File 1</h3>
+                <a href="chu_nghia_xa_hoi_hoc_file_1.pdf" class="btn">Xem</a>
+                <a href="chu_nghia_xa_hoi_hoc_file_1.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Chủ Nghĩa Xã Hội Học - File 2</h3>
+                <a href="chu_nghia_xa_hoi_hoc_file_2.pdf" class="btn">Xem</a>
+                <a href="chu_nghia_xa_hoi_hoc_file_2.pdf" class="btn">Tải Xuống</a>
+            </li>
+            <li>
+                <h3>Tài Liệu Chủ Nghĩa Xã Hội Học - File 3</h3>
+                <a href="chu_nghia_xa_hoi_hoc_file_3.pdf" class="btn">Xem</a>
+                <a href="chu_nghia_xa_hoi_hoc_file_3.pdf" class="btn">Tải Xuống</a>
+            </li>
+        </ul>
+        <div class="upload-section">
+            <h3>Tải tài liệu lên</h3>
+            <input type="file" id="upload-chu-nghia-xa-hoi-hoc" />
+            <button class="btn" onclick="uploadFile('chu_nghia_xa_hoi_hoc')">Tải Lên</button>
         </div>
     </div>
 </div>
+
+<script>
+    const subjectSelect = document.getElementById('subject-select');
+    const materials = document.querySelectorAll('.materials');
+
+    subjectSelect.addEventListener('change', function() {
+        // Hide all materials initially
+        materials.forEach(material => material.style.display = 'none');
+
+        // Show the selected material
+        const selectedValue = this.value;
+        if (selectedValue) {
+            document.getElementById(selectedValue).style.display = 'block';
+        }
+    });
+
+    function uploadFile(subjectId) {
+        const fileInput = document.getElementById(`upload-${subjectId}`);
+        const file = fileInput.files[0];
+        if (file) {
+            alert(`Đã tải lên tài liệu: ${file.name}`);
+            // Implement upload logic here
+        } else {
+            alert("Vui lòng chọn một tệp để tải lên.");
+        }
+    }
+</script>
 
 </body>
 </html>
