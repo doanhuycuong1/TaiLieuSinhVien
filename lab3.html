@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tài liệu Sinh viên</title>
+    <title>Chia Sẻ Tài liệu Sinh viên</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,12 +53,43 @@
             margin-top: 20px;
             text-align: center;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Tài liệu Sinh viên</h1>
+    <h1>Chia Sẻ Tài liệu Sinh viên</h1>
     <div class="menu">
         <label for="subject-select">Chọn môn học:</label>
         <select id="subject-select">
@@ -76,17 +107,17 @@
         <ul class="file-list">
             <li>
                 <h3>Tài Liệu Toán Cao Cấp - File 1</h3>
-                <a href="toan_cao_cap_file_1.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('toan_cao_cap_file_1.pdf')">Xem</button>
                 <a href="toan_cao_cap_file_1.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Toán Cao Cấp - File 2</h3>
-                <a href="toan_cao_cap_file_2.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('toan_cao_cap_file_2.pdf')">Xem</button>
                 <a href="toan_cao_cap_file_2.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Toán Cao Cấp - File 3</h3>
-                <a href="toan_cao_cap_file_3.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('toan_cao_cap_file_3.pdf')">Xem</button>
                 <a href="toan_cao_cap_file_3.pdf" class="btn">Tải Xuống</a>
             </li>
         </ul>
@@ -96,22 +127,22 @@
             <button class="btn" onclick="uploadFile('toan_cao_cap')">Tải Lên</button>
         </div>
     </div>
-    
+
     <div class="materials" id="toan_roi_rac">
         <ul class="file-list">
             <li>
                 <h3>Tài Liệu Toán Rời Rạc - File 1</h3>
-                <a href="toan_roi_rac_file_1.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('toan_roi_rac_file_1.pdf')">Xem</button>
                 <a href="toan_roi_rac_file_1.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Toán Rời Rạc - File 2</h3>
-                <a href="toan_roi_rac_file_2.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('toan_roi_rac_file_2.pdf')">Xem</button>
                 <a href="toan_roi_rac_file_2.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Toán Rời Rạc - File 3</h3>
-                <a href="toan_roi_rac_file_3.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('toan_roi_rac_file_3.pdf')">Xem</button>
                 <a href="toan_roi_rac_file_3.pdf" class="btn">Tải Xuống</a>
             </li>
         </ul>
@@ -126,17 +157,17 @@
         <ul class="file-list">
             <li>
                 <h3>Tài Liệu Vật Lý 1 - File 1</h3>
-                <a href="vat_ly_1_file_1.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('vat_ly_1_file_1.pdf')">Xem</button>
                 <a href="vat_ly_1_file_1.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Vật Lý 1 - File 2</h3>
-                <a href="vat_ly_1_file_2.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('vat_ly_1_file_2.pdf')">Xem</button>
                 <a href="vat_ly_1_file_2.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Vật Lý 1 - File 3</h3>
-                <a href="vat_ly_1_file_3.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('vat_ly_1_file_3.pdf')">Xem</button>
                 <a href="vat_ly_1_file_3.pdf" class="btn">Tải Xuống</a>
             </li>
         </ul>
@@ -151,17 +182,17 @@
         <ul class="file-list">
             <li>
                 <h3>Tài Liệu Pháp Luật Đại Cương - File 1</h3>
-                <a href="phap_luat_dai_cuong_file_1.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('phap_luat_dai_cuong_file_1.pdf')">Xem</button>
                 <a href="phap_luat_dai_cuong_file_1.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Pháp Luật Đại Cương - File 2</h3>
-                <a href="phap_luat_dai_cuong_file_2.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('phap_luat_dai_cuong_file_2.pdf')">Xem</button>
                 <a href="phap_luat_dai_cuong_file_2.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Pháp Luật Đại Cương - File 3</h3>
-                <a href="phap_luat_dai_cuong_file_3.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('phap_luat_dai_cuong_file_3.pdf')">Xem</button>
                 <a href="phap_luat_dai_cuong_file_3.pdf" class="btn">Tải Xuống</a>
             </li>
         </ul>
@@ -176,17 +207,17 @@
         <ul class="file-list">
             <li>
                 <h3>Tài Liệu Anh Văn 1 - File 1</h3>
-                <a href="anh_van_1_file_1.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('anh_van_1_file_1.pdf')">Xem</button>
                 <a href="anh_van_1_file_1.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Anh Văn 1 - File 2</h3>
-                <a href="anh_van_1_file_2.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('anh_van_1_file_2.pdf')">Xem</button>
                 <a href="anh_van_1_file_2.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Anh Văn 1 - File 3</h3>
-                <a href="anh_van_1_file_3.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('anh_van_1_file_3.pdf')">Xem</button>
                 <a href="anh_van_1_file_3.pdf" class="btn">Tải Xuống</a>
             </li>
         </ul>
@@ -201,17 +232,17 @@
         <ul class="file-list">
             <li>
                 <h3>Tài Liệu Chủ Nghĩa Xã Hội Học - File 1</h3>
-                <a href="chu_nghia_xa_hoi_hoc_file_1.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('chu_nghia_xa_hoi_hoc_file_1.pdf')">Xem</button>
                 <a href="chu_nghia_xa_hoi_hoc_file_1.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Chủ Nghĩa Xã Hội Học - File 2</h3>
-                <a href="chu_nghia_xa_hoi_hoc_file_2.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('chu_nghia_xa_hoi_hoc_file_2.pdf')">Xem</button>
                 <a href="chu_nghia_xa_hoi_hoc_file_2.pdf" class="btn">Tải Xuống</a>
             </li>
             <li>
                 <h3>Tài Liệu Chủ Nghĩa Xã Hội Học - File 3</h3>
-                <a href="chu_nghia_xa_hoi_hoc_file_3.pdf" class="btn">Xem</a>
+                <button class="btn" onclick="viewFile('chu_nghia_xa_hoi_hoc_file_3.pdf')">Xem</button>
                 <a href="chu_nghia_xa_hoi_hoc_file_3.pdf" class="btn">Tải Xuống</a>
             </li>
         </ul>
@@ -221,22 +252,38 @@
             <button class="btn" onclick="uploadFile('chu_nghia_xa_hoi_hoc')">Tải Lên</button>
         </div>
     </div>
+
+    <div class="modal" id="file-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">Trở Lại</button>
+            <iframe id="file-viewer" width="100%" height="500px"></iframe>
+        </div>
+    </div>
 </div>
 
 <script>
     const subjectSelect = document.getElementById('subject-select');
     const materials = document.querySelectorAll('.materials');
+    const fileModal = document.getElementById('file-modal');
+    const fileViewer = document.getElementById('file-viewer');
 
     subjectSelect.addEventListener('change', function() {
-        // Hide all materials initially
         materials.forEach(material => material.style.display = 'none');
-
-        // Show the selected material
         const selectedValue = this.value;
         if (selectedValue) {
             document.getElementById(selectedValue).style.display = 'block';
         }
     });
+
+    function viewFile(filePath) {
+        fileViewer.src = filePath;
+        fileModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        fileModal.style.display = 'none';
+        fileViewer.src = '';
+    }
 
     function uploadFile(subjectId) {
         const fileInput = document.getElementById(`upload-${subjectId}`);
