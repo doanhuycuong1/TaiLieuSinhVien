@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tab Example</title>
+<style>
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        transition: 0.3s;
+    }
+
+    .tab button:hover {
+        background-color: #ddd;
+    }
+
+    .tab button.active {
+        background-color: #ccc;
+    }
+
+    .tabcontent {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+
+    .header {
+        background-color: #1e6af8; 
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        margin: 0;
+    }
+
+    .header p {
+        margin: 10px 0;
+    }
+
+    .highlighted-section {
+        margin-bottom: 5px;
+    }
+
+    .heading-section {
+        margin-bottom: 10px;
+    }
+
+    .smaller-text {
+        font-size: 12px;
+    }
+</style>
+</head>
+<body>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'tab1')">Business Operations</button>
+    <button class="tablinks" onclick="openTab(event, 'tab2')">Cloud Computing</button>
+    <button class="tablinks" onclick="openTab(event, 'tab3')">Cybersecurity</button>
+    <button class="tablinks" onclick="openTab(event, 'tab4')">Dât Science</button>
+    <button class="tablinks" onclick="openTab(event, 'tab5')">Development</button>
+    <button class="tablinks" onclick="openTab(event, 'tab6')">IT Operations</button>
+    <button class="tablinks" onclick="openTab(event, 'tab7')">Language Learning</button>
+    <button class="tablinks" onclick="openTab(event, 'tab8')">Leadership & Management</button>
+    <button class="tablinks" onclick="openTab(event, 'tab9')">Makerting</button>
+</div>
+
+<header class="header">
+    <h1>Welcome, Doan Huy Cuong</h1>
+    <p>Add your occupation and interests</p>
+</header>
+
+<main>
+    <div class="highlighted-section">
+        <h2>Weekly streak <span class="purple-dot"></span></h2>
+        <p>One ring down, one to go. Keep it up! <span class="purple-dot"></span></p>
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvi.pngtree.com%2Fso%2Fv%25E1%25BA%25BD-tay-ng%25E1%25BB%258Dn-l%25E1%25BB%25ADa&psig=AOvVaw0ECEiegLcagSoQdyaBHUDs&ust=1729389402562000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPD1z-KrmYkDFQAAAAAdAAAAABAE" alt="2 Week current week" style="display: block; margin: 0 auto;">
+    </div>
+    
+    <div class="pick-up">
+        <h1>Pick up where you left off</h1>
+        <button class="active">Courses</button>
+        <button>Learning Paths</button>
+        <button>Certification Preparation</button>
+    </div>
+</main>
+
+<div id="tab1" class="tabcontent">
+    <h3>Tab 1 Content</h3>
+    <p>Content for Tab 1 goes here.</p>
+</div>
+
+<!-- Remaining tab content sections -->
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<footer>
+    <p>You have visited the site 4/1 times</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
